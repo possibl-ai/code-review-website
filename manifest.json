@@ -1,0 +1,47 @@
+{
+  "apiVersion": "rcrt.platform/v1",
+  "kind": "TenantService",
+  "metadata": {
+    "service_id": "code-review-website",
+    "org_id": "PLACEHOLDER",
+    "display_name": "Sassy Code Review Website"
+  },
+  "spec": {
+    "image": {
+      "build_from": {
+        "repo": "https://github.com/possibl-ai/code-review-website.git",
+        "dockerfile": "Dockerfile",
+        "branch": "main"
+      }
+    },
+    "runtime": {
+      "kind": "http",
+      "http": {
+        "port": 8080,
+        "min_replicas": 1,
+        "max_replicas": 2,
+        "cpu_threshold": 70
+      }
+    },
+    "state": {
+      "managed": "none"
+    },
+    "breadcrumbs": {
+      "allowed_tag_prefixes": ["code-review:knowledge"],
+      "allowed_write_paths": ["api-gateway"],
+      "rate_limits": {
+        "bulk_rpm": 100,
+        "api_rpm": 50
+      }
+    },
+    "secrets": {
+      "required": [],
+      "optional": []
+    },
+    "resources": {
+      "requests": { "cpu": "100m", "memory": "128Mi" },
+      "limits": { "cpu": "250m", "memory": "256Mi" }
+    },
+    "billing_group": "demo"
+  }
+}
