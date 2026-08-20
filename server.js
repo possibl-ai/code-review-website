@@ -186,7 +186,7 @@ function displayReview(review) {
     '    <div class="review-avatar">SR</div>' +
     '    <div class="review-author">Sassy Reviewer</div>' +
     '  </div>' +
-    '  <div class="review-content">' + escapeHtml(review).replace(/\n/g, '<br>') + '</div>' +
+    '  <div class="review-content">' + escapeHtml(review).replace(/\\n/g, '<br>') + '</div>' +
     '</div>';
 }
 </script>
