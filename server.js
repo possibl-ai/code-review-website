@@ -140,7 +140,7 @@ function renderFiles(files) {
 function renderCode(file) {
   if (!file.patch) return '<div class="error">No changes to display</div>';
   
-  return file.patch.split('\n').map(line => {
+  return file.patch.split('\\n').map(line => {
     if (line.startsWith('+') && !line.startsWith('+++')) {
       return '<div class="added-line">' + escapeHtml(line) + '</div>';
     } else if (line.startsWith('-') && !line.startsWith('---')) {
